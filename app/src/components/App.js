@@ -1,7 +1,12 @@
 import Header from "./NavBar"
-function App (){
+import ItemListContainer from "./ItemListContainer";
+function App() {
     return (
-        <Header></Header>
-        )
-};
+        <>
+            <Header></Header>
+            <ItemListContainer greetings="Aquí iría el Catálogo"/>
+        </>
+    )
+}
+
 export default App;

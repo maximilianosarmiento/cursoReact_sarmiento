@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
+import CartWidget from "./CartWidget";
 
 function Header() {
     return (
@@ -11,6 +12,8 @@ function Header() {
                         <Nav.Link  href="#quienesSomos">¿Quienes somos?</Nav.Link>
                         <Nav.Link  href="#contacto">Contacto</Nav.Link>
                     </Nav>
+
+                    <CartWidget/>
                 </Container>
             </Navbar>
         </>

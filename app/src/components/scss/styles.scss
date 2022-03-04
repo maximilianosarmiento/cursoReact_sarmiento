@@ -5,6 +5,18 @@
 
 .navbar{
     background-color: lightblue !important;
-    
+    box-shadow: 0px 0.1rem 0.5rem #454545a9;
 
+    .contenedorCarrito{
+        .iconoCarrito{
+            color: white;
+            font-size: 1.5rem;
+            
+            &:hover{
+                transform: scale(1.4, 1.4);
+                transition: 100ms;
+                cursor: pointer;
+            }
+        }
+    }
 }
