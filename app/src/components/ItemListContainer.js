@@ -1,6 +1,10 @@
-function ItemListContainer ({greetings}){
+import ItemCount from "./ItemCount";
+function ItemListContainer({ greetings }) {
+
     return (
-        <h1>{greetings}</h1>
+        <div className="contenedorContador">
+            <ItemCount stock={5} initial={1} onAdd = {onAdd} />
+        </div>
     )
 };
 export default ItemListContainer;
