@@ -8,4 +8,3 @@ import "./components/scss/styles.scss";
 
 ReactDOM.render(<App/>, document.getElementById(`root`));
 
-//Vierenes 25 de Feb. Importe componentes de bootsrap reac, importe la navbar y añadi archivo scss

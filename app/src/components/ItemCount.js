@@ -17,12 +17,10 @@ function ItemCount (props){
         setContador(0);
     }
 
-    const onAdd = ()={
-        console.log("Hay Stock")
-    }
+    
 
         
-    }
+    
 
 
 
@@ -30,7 +28,7 @@ function ItemCount (props){
         <>
         <p>Items: {contador}</p>
         <Button onClick={restar} disabled={contador === 0}>-</Button>
-        <Button onClick={OnAdd}>Agregar al Carrito</Button>
+        <Button onClick={reset}>Resetear Items</Button>
         <Button onClick={aumentar} disabled={contador === props.stock}>+</Button>
         </>
     )
