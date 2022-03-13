@@ -1,25 +1,31 @@
 import ItemList from "./ItemList";
+import iphone13 from "./images/Iphone13.jpg"
 import {useState, useEffect} from "react";
 
-let productosIniciales = [
+ // Armo array de productos solo para probar, generalmente esto se trae de Base de Datos o API Rest
+   let productosIniciales = [
     {
         id: 1,
         producto: "Producto 1",
-        precio: 100
+        precio: 100,
+        img: <img src={iphone13}/> 
     },
     {
         id: 2,
         producto: "Producto 2",
-        precio: 200
+        precio: 200,
+        img: <img src={iphone13}/>
     },
     {
         id: 3,
         producto: "Producto 3",
-        precio: 300
+        precio: 300,
+        img: <img src={iphone13}/>
     }
-]; // Armo array de productos solo para probar, generalmente esto se trae de Base de Datos o API Rest
+];
+function ItemListContainer() {
+ 
 
-function ItemListContainer({ greetings }) {
     const [loading, setLoading] = useState(true);
     const [productos, setProductos] = useState([]);
 
@@ -28,7 +34,7 @@ function ItemListContainer({ greetings }) {
             setTimeout(()=>{
                 res(productosIniciales)
             },2000)
-        })
+        },[])
 
         promesa.then((res)=>{
             setProductos(productosIniciales)
@@ -41,7 +47,6 @@ function ItemListContainer({ greetings }) {
         })
     })
 
-        console.log(productos)
 
     return (
         <div className="contenedorContador">

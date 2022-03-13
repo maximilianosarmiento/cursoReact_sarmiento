@@ -29,3 +29,31 @@
         margin-left: 2px;
     }
 }
+.cardsContainer{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.itemDetailContainer{
+    display: flex;
+    justify-content: center;
+    .contenedorDetalle{
+        background-color: lightblue;
+        width: 70%;
+        display: flex;
+        justify-content: space-around;
+        margin: 1rem;
+
+        .imagenDetalle{
+            width: 20rem;
+            padding: 0.5rem;
+        }
+        .textoDetalle{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+        }
+
+    }
+}

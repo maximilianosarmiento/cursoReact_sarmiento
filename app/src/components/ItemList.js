@@ -1,15 +1,16 @@
 import Items from "./Items";
 function ItemList(props) {
+    console.log(props)
 
     return (
         <>
-            <ul>
+            <div className="cardsContainer">
                 {props.productos.map((producto, index) => {
                     return (
-                        <Items producto={producto.producto} key={producto.id}/>
+                        <Items propItems={producto} key={producto.id}/>
                     )
                 })}
-            </ul>
+            </div>
         </>
     )
 }
