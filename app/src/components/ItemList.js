@@ -5,11 +5,12 @@ function ItemList(props) {
     return (
         <>
             <div className="cardsContainer">
-                {props.productos.map((producto, index) => {
+                {props.productos.map((producto) => {
                     return (
                         <Items propItems={producto} key={producto.id}/>
-                    )
-                })}
+                        )
+                    })
+                }
             </div>
         </>
     )

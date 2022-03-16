@@ -1,36 +1,41 @@
-import { useState, useEffect } from "react";
-//import productosIniciales from "./ItemListContainer";
 import ItemDetail from "./ItemDetail";
-import iphone13 from "./images/Iphone13.jpg"
+import productosIniciales from "./ProductosIniciales";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 
-const prod1 = {
-    id: 1,
-    producto: "Producto 1",
-    precio: 100,
-    img: iphone13
-}
+
 function ItemDetailContainer() {
-    const [loading, setLoading] = useState(true)
-    const [producto, setProducto] = useState({})
+    const [loading, setLoading] = useState(true);
+    const [productos, setProductos] = useState([]);
+    const { productoId } = useParams();
 
     useEffect(() => {
+        setLoading(true)
         const promesa = new Promise((res, rej) => {
             setTimeout(() => {
-                res(prod1)
+                res(productosIniciales)
             }, 2000)
         })
+
+
         promesa.then((data) => {
-                setProducto(data)
+            let productoDetalle = data.find(producto => producto.id.toString() === productoId) 
+            setProductos(productoDetalle)
+        })
+            .catch((error) => {
+                console.log("Error")
             })
             .finally(() => {
-                setLoading(false)
+                setLoading(false);
             })
-    }, [])
+    }, [productoId])
     return (
         <div className="itemDetailContainer">
-            {loading ? <></> : <ItemDetail producto={producto} />}
-            
+            {loading ? <>Loading...</> : (
+                productos ? <ItemDetail detalle={productos} /> : <p>No se encontraron objetos</p>
+
+            )}
         </div>
     )
 

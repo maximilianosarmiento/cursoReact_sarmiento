@@ -1,51 +1,46 @@
 import ItemList from "./ItemList";
-import iphone13 from "./images/Iphone13.jpg"
+import productosIniciales from "./ProductosIniciales";
+import {toast, ToastContainer} from "react-toastify";
 import {useState, useEffect} from "react";
+import {useParams} from "react-router-dom";
 
  // Armo array de productos solo para probar, generalmente esto se trae de Base de Datos o API Rest
-   let productosIniciales = [
-    {
-        id: 1,
-        producto: "Producto 1",
-        precio: 100,
-        img: <img src={iphone13}/> 
-    },
-    {
-        id: 2,
-        producto: "Producto 2",
-        precio: 200,
-        img: <img src={iphone13}/>
-    },
-    {
-        id: 3,
-        producto: "Producto 3",
-        precio: 300,
-        img: <img src={iphone13}/>
-    }
-];
+    
 function ItemListContainer() {
+    function handleToast(){
+        toast.error("Error")
+    }
  
 
     const [loading, setLoading] = useState(true);
     const [productos, setProductos] = useState([]);
+    const {categoria} = useParams();
 
     useEffect( () => {
+        setLoading(true);
         const promesa = new Promise((res,rej)=>{
             setTimeout(()=>{
                 res(productosIniciales)
             },2000)
-        },[])
+        })
 
         promesa.then((res)=>{
-            setProductos(productosIniciales)
+            if (categoria){
+                const productoPorCategoria = productosIniciales.filter(producto => producto.categoria === categoria);
+                setProductos(productoPorCategoria)
+            }else{
+                setProductos(productosIniciales)
+            }
+            //setProductos(productosIniciales)
         })
         .catch((error)=>{
-            console.log ("Error")
+            <ToastContainer></ToastContainer>
+            handleToast();
         })
         .finally(()=>{
             setLoading(false);
         })
-    })
+    },[categoria])
 
 
     return (
