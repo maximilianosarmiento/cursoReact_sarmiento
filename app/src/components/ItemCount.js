@@ -1,38 +1,38 @@
 import Button from "react-bootstrap/Button";
-import {useState} from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
-function ItemCount (props){
-    
+function ItemCount(props) {
+
     const [contador, setContador] = useState(props.initial);
-    
-    function aumentar (){
-        setContador(contador + 1);
+
+    function aumentar() {
+        if (contador < props.stock) {
+            setContador(contador + 1)
+        };
     }
 
-    function restar (){
-        setContador(contador - 1);
+    function restar() {
+        if (contador > 0) {
+            setContador(contador - 1)
+        };
     }
 
-    function reset(){
-        setContador(0);
+    const [agregado, setAgregado] = useState(false)
+
+    function agregarAlCarrito() {
+        props.onAdd(contador);
+        setAgregado(true)
     }
-
-    
-
-        
-    
-
-
 
     return (
         <>
-        <p>Items: {contador}</p>
-        <Button onClick={restar} disabled={contador === 0}>-</Button>
-        <Button onClick={reset}>Resetear Items</Button>
-        <Button onClick={aumentar} disabled={contador === props.stock}>+</Button>
+            <p>Items: {contador}</p>
+            <Button onClick={restar} disabled={contador === 0}>-</Button>
+            {agregado ? <Button> <Link to="/Carrito">Ir al Carrito</Link> </Button>:<Button onClick={agregarAlCarrito} disabled={contador === 0}>Agregar al Carrito</Button>}
+            <Button onClick={aumentar} disabled={contador === props.stock}>+</Button>
         </>
     )
-
 
 }
 

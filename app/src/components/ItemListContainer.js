@@ -1,15 +1,12 @@
 import ItemList from "./ItemList";
 import productosIniciales from "./ProductosIniciales";
-import {toast, ToastContainer} from "react-toastify";
+import {toast} from "react-toastify";
 import {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 
  // Armo array de productos solo para probar, generalmente esto se trae de Base de Datos o API Rest
     
 function ItemListContainer() {
-    function handleToast(){
-        toast.error("Error")
-    }
  
 
     const [loading, setLoading] = useState(true);
@@ -34,8 +31,7 @@ function ItemListContainer() {
             //setProductos(productosIniciales)
         })
         .catch((error)=>{
-            <ToastContainer></ToastContainer>
-            handleToast();
+            toast.error("Error al cargar los productos")
         })
         .finally(()=>{
             setLoading(false);
