@@ -1,8 +1,13 @@
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext} from "react";
+import { cartContext } from "./CartContext";
 
 function ItemCount(props) {
+    console.log(props)
+
+    
+    const {agregarAlCarrito} = useContext(cartContext);
 
     const [contador, setContador] = useState(props.initial);
 
@@ -20,16 +25,17 @@ function ItemCount(props) {
 
     const [agregado, setAgregado] = useState(false)
 
-    function agregarAlCarrito() {
+    function confirmarCompra() {
         props.onAdd(contador);
         setAgregado(true)
+        console.log("Agregado")
     }
 
     return (
         <>
             <p>Items: {contador}</p>
             <Button onClick={restar} disabled={contador === 0}>-</Button>
-            {agregado ? <Button> <Link to="/Carrito">Ir al Carrito</Link> </Button>:<Button onClick={agregarAlCarrito} disabled={contador === 0}>Agregar al Carrito</Button>}
+            {agregado ? <Button> <Link onClick={()=>{agregarAlCarrito()}} to="/Carrito">Ir al Carrito</Link> </Button>:<Button onClick={confirmarCompra} disabled={contador === 0}>Confirmar Compra</Button>}
             <Button onClick={aumentar} disabled={contador === props.stock}>+</Button>
         </>
     )
