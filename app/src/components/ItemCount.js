@@ -1,45 +1,34 @@
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
-import { useState, useContext} from "react";
-import { cartContext } from "./CartContext";
+import {useState} from "react"
+import Button from "react-bootstrap/esm/Button"
 
-function ItemCount(props) {
-    console.log(props)
-
+const ItemCount =({initial,stock,onAdd}) => {
     
-    const {agregarAlCarrito} = useContext(cartContext);
+    let [contador,setContador] = useState(initial)
 
-    const [contador, setContador] = useState(props.initial);
-
-    function aumentar() {
-        if (contador < props.stock) {
-            setContador(contador + 1)
-        };
+    const agregar =()=>{
+        if (contador<stock){
+        setContador(contador+1)
+        }
     }
 
-    function restar() {
-        if (contador > 0) {
-            setContador(contador - 1)
-        };
+    const restar =()=>{
+        if (contador>initial){
+            setContador(contador-1)
+        }
     }
 
-    const [agregado, setAgregado] = useState(false)
-
-    function confirmarCompra() {
-        props.onAdd(contador);
-        setAgregado(true)
-        console.log("Agregado")
+    const confirmar =()=>{
+        onAdd(contador)
     }
 
     return (
         <>
-            <p>Items: {contador}</p>
-            <Button onClick={restar} disabled={contador === 0}>-</Button>
-            {agregado ? <Button> <Link onClick={()=>{agregarAlCarrito()}} to="/Carrito">Ir al Carrito</Link> </Button>:<Button onClick={confirmarCompra} disabled={contador === 0}>Confirmar Compra</Button>}
-            <Button onClick={aumentar} disabled={contador === props.stock}>+</Button>
+            <p>Productos Seleccionados : {contador}</p>
+            <Button className="btn" onClick={agregar}>Agregar</Button>
+            <Button className="btn" onClick={restar}>Quitar</Button>
+            <Button className="confirmar" onClick={confirmar}>Confirmar Compra</Button>
         </>
     )
-
 }
-
+    
 export default ItemCount;

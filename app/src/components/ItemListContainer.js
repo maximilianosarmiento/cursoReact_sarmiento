@@ -1,52 +1,36 @@
+import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList";
-import productosIniciales from "./ProductosIniciales";
-import {toast} from "react-toastify";
-import {useState, useEffect} from "react";
-import {useParams} from "react-router-dom";
-
- // Armo array de productos solo para probar, generalmente esto se trae de Base de Datos o API Rest
-    
-function ItemListContainer() {
- 
-
-    const [loading, setLoading] = useState(true);
-    const [productos, setProductos] = useState([]);
-    const {categoria} = useParams();
-
-    useEffect( () => {
-        setLoading(true);
-        const promesa = new Promise((res,rej)=>{
-            setTimeout(()=>{
-                res(productosIniciales)
-            },2000)
-        })
-
-        promesa.then((res)=>{
-            if (categoria){
-                const productoPorCategoria = productosIniciales.filter(producto => producto.categoria === categoria);
-                setProductos(productoPorCategoria)
-            }else{
-                setProductos(productosIniciales)
-            }
-            //setProductos(productosIniciales)
-        })
-        .catch((error)=>{
-            toast.error("Error al cargar los productos")
-        })
-        .finally(()=>{
-            setLoading(false);
-        })
-    },[categoria])
+import itemProductos from "../Utiles";
+import { useParams } from "react-router-dom";
 
 
+const ItemListContainer = (props) => {
+    const [listaProductos, setListaProductos] = useState([]);
+
+    const {categoria}=useParams();
+
+
+    useEffect(() => {
+        const promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(
+                    categoria?
+                        itemProductos.filter((item)=>
+                        item.categoria===categoria
+                    ):itemProductos);                    
+            }, 2000);
+        }).then((productos) => {
+            setListaProductos(productos);
+        });
+    },[categoria]);
+
+    const greeting = props.greeting
     return (
-        <div className="contenedorContador">
-            <p>{loading && "Cargando por favor espere..."}</p>
-            <ItemList productos={productos}/>
-        </div>
-    )
-    
+        <>
+            <h1>{greeting}</h1>
+            <ItemList lista={listaProductos} />
+        </>
+    );
 }
-
 
 export default ItemListContainer;

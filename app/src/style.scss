@@ -1,0 +1,165 @@
+$colorPrimario: lightblue;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body,
+#root{
+    height: 100vh;
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+}
+
+#main__header{
+    background-color: $colorPrimario;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+
+    .nombre{
+        margin-left: 1rem;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: white;
+    }
+    nav{
+        display: flex;
+        justify-content: space-around;
+
+        a{
+            color: white;
+            text-decoration: none;
+            margin-left: 0.5rem;
+            padding: 1rem;
+            
+            &:hover{
+                color: white;
+                transform: scale(1,2,1,2);
+            }
+        }
+
+         .carrito{
+           margin-left: 1rem;
+           align-self: center;
+        }
+    }
+}
+
+main{
+    flex-grow: 1;
+}
+
+.container{
+    display:block;
+    align-items: center;
+    margin: auto;
+    padding: 3rem;
+
+    #cardContainer{
+        display: flex;
+        margin: 10;
+        padding: 1rem;
+
+        img{          
+            flex-wrap: nowrap;
+            border-radius: 20%;
+        }
+    }
+
+    #cards{
+        border: 2px solid lightblue;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 2rem;
+        list-style: none;
+        &:hover{
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transform: scale(1.03,1.03);
+            transition: all 0.3s ease-in-out;
+        }
+
+
+        .confirmar{
+            padding: 1rem;
+            font-size: 10px;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            color: #fff;
+        }
+        
+
+            .btnDetalle{
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            background-color: $colorPrimario;
+            border: none;
+            &:hover{
+                background-color: rgb(109, 193, 221);
+                color: #fff;
+                box-shadow: 0 0px 5px rgba(0, 0, 0, 0.5);
+                transition: all 0.2s ease-in-out;
+            }
+                a{
+                    text-decoration: none;
+                    color: white;
+
+            }
+            }
+        }
+        #cardDetalle{
+            border: 2px solid lightblue;
+        border-radius: 10px;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 2rem;
+        list-style: none;
+        &:hover{
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transform: scale(1.03,1.03);
+            transition: all 0.3s ease-in-out;
+        }
+        }
+
+}
+
+#main__footer{
+    background-color: rgb(206, 203, 203);
+    border-top: 3px solid lightblue;
+    display: grid;
+    grid-template-columns: 1,2;
+    padding: 1.5rem;
+    box-shadow: 3px 0 8px rgba(0,0,0,0.5);
+    color: rgb(255, 255, 255);
+    text-align: center;
+
+    #redes a{
+        text-decoration: none;
+        justify-self: center;
+        padding: 1rem;
+        color: white;
+        font-size: 2.5rem;
+        padding-top: 3rem;
+    }
+}

@@ -1,44 +1,35 @@
+import React, { useEffect, useState } from "react";
+import ItemCount from "./ItemCount"
+import ItemList from "./ItemList";
+import itemProductos from "../Utiles";
 import ItemDetail from "./ItemDetail";
-import productosIniciales from "./ProductosIniciales";
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+const ItemDetailContainer = (props) => {
+    const [itemDeProductos, setItemDeProductos] = useState({});
 
-
-function ItemDetailContainer() {
-    const [loading, setLoading] = useState(true);
-    const [productos, setProductos] = useState([]);
-    const { productoId } = useParams();
+    const { id } = useParams()
 
     useEffect(() => {
-        setLoading(true)
-        const promesa = new Promise((res, rej) => {
+        const promise = new Promise((resolve, reject) => {
             setTimeout(() => {
-                res(productosIniciales)
-            }, 2000)
-        })
+                resolve(itemProductos.find((item) => {
+                    return item.id.toString() === id            
+                }));
+            }, 2000);
+        }).then((productos) => {
+            setItemDeProductos(productos);
+        });
+    });
 
-
-        promesa.then((data) => {
-            let productoDetalle = data.find(producto => producto.id.toString() === productoId) 
-            setProductos(productoDetalle)
-        })
-            .catch((error) => {
-                console.log("Error")
-            })
-            .finally(() => {
-                setLoading(false);
-            })
-    }, [productoId])
+    const greeting = props.greeting
     return (
-        <div className="itemDetailContainer">
-            {loading ? <>Loading...</> : (
-                productos ? <ItemDetail detalle={productos} /> : <p>No se encontraron objetos</p>
+        <>
+            <h1>{greeting}</h1>
+            <ItemDetail itemProductos={itemDeProductos} />
 
-            )}
-        </div>
-    )
-
+        </>
+    );
 }
 
 export default ItemDetailContainer;

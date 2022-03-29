@@ -1,26 +1,18 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
-import CartWidget from "./CartWidget";
-import { Link, NavLink } from "react-router-dom";
+import CartWidget from "./CartWidget"
+import { Link } from "react-router-dom";
 
-function NavBar() {
+const NavBar = () => {
     return (
         <>
-            <Navbar bg="light" variant="light" id ="navbar">
-                <Container>
-                    <Link to="/" id="marca">Nombre a definir</Link>
-                    <Nav className="me-auto">
-                        <Link  to="/">Home</Link>
-                        <Link  to="/categoria/pc">Pc</Link>
-                        <Link  to="/categoria/celular">Celular</Link>
-                        <Link  to="/categoria/electrodomestico">Electrodomésticos</Link>
-                    </Nav>
-                    <NavLink to="/Carrito">
-                    <CartWidget/>
-                    </NavLink>
-                </Container>
-            </Navbar>
+            <Link to='/' className="nombre"><h1>E-commerce</h1></Link>
+            <nav>
+                <Link to='/'>Home</Link>
+                <Link to='/categoria/Tecnologia'>Tecnología</Link>
+                <Link to='/categoria/Moda'>Moda</Link>
+                <Link className="btn" to='/carrito'><CartWidget /></Link>
+            </nav>
         </>
-    )
+    );
 }
 
 export default NavBar;

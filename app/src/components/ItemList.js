@@ -1,19 +1,16 @@
-import Items from "./Items";
-function ItemList(props) {
-    console.log(props)
+import React from "react";
+import Item from "./Item";
 
-    return (
-        <>
-            <div className="cardsContainer">
-                {props.productos.map((producto) => {
-                    return (
-                        <Items propItems={producto} key={producto.id}/>
-                        )
-                    })
-                }
-            </div>
-        </>
-    )
-}
+const ItemList = (props) => {
+  const listaProductos = props.lista;
+
+  return (
+    <div id= "cardContainer">
+      {listaProductos.map((cadaProducto) => {
+        return <Item key= {cadaProducto.id} producto={cadaProducto} />;
+      })}
+    </div>
+  );
+};
 
 export default ItemList;

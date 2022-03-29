@@ -1,82 +1,38 @@
-import { createContext } from "react";
-import { useState } from "react";
+import { createContext, useState } from "react";
 
-export const cartContext = createContext();
-const { Provider } = cartContext;
+export const contexto = createContext()
+const { Provider } = contexto;
 
-function MiProvider({ children }) {
+const MiProvider = ({ children }) => {
 
-    const [carrito, setCarrito ] = useState([{
-        id:1,
-        nombre: "Libro",
-        precio: 200,
-        categoria: "Electrodomestico",
-        cantidad: 2
-    },
-    {
-        id:2,
-        nombre: "Plancha",
-        precio: 250,
-        categoria: "Electrodomestico",
-        cantidad: 3,
-    },{
-        id:3,
-        nombre: "Celular",
-        precio: 300,
-        categoria: "Pc",
-        cantidad: 1
-    }]);
-    const [total, setTotal] = useState(0)
-    console.log(carrito)
+    const [carrito, setCarrito] = useState([]);
 
-    const borrarDelCarrito = (id) => {
-        console.log("Borrando desde provider",id);
-        console.log(id)
-    };
+    const borrarDelCarrito = (id)=>{
+        
+        const carritoAux = carrito.filter(elemento=>elemento.producto.id !==id);
+        setCarrito(carritoAux)
+    }
+    
 
     const agregarAlCarrito = (producto, cantidad) => {
-        if (!isInCart()){
-            const copia = carrito.slice(0);
-            copia.push({...producto, cantidad});
-            setCarrito(copia);
-        }
-    }; 
+        const carritoAux = [...carrito];
+
+        carritoAux.push({ producto, cantidad });
+        setCarrito(carritoAux)
+    };
 
     const limpiarCarrito = () => {
-        setCarrito([])
-    }
-
-    const isInCart = () => {
-        //busca en el carrito el id del producto
-        //si esta en el carrito devuelve true
-        //si no esta devuelve false
-
-        //carrito.find(item => item.id === producto.id)
-    }
+        setCarrito([]);
+    };
 
     const valorDelContexto = {
+        borrarDelCarrito,
+        limpiarCarrito,
+        carrito,
+        agregarAlCarrito,
+    };
 
-        total: total,
-        carrito: carrito,
-        //agregarAlCarrito : agregarAlCarrito,
-        borrarDelCarrito : borrarDelCarrito,
-        limpiarCarrito : limpiarCarrito
-    }   
-
-    return (
-        <Provider value={valorDelContexto}>
-            {children}
-        </Provider>
-    )
-}
+    return <Provider value={valorDelContexto}>{children}</Provider>;
+};
 
 export default MiProvider;
-
-
-
-
-
-
-
-
-        /*carrito:         total: 0*/
