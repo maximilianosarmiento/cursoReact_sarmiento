@@ -149,7 +149,7 @@ main{
     border-top: 3px solid lightblue;
     display: grid;
     grid-template-columns: 1,2;
-    padding: 1.5rem;
+    padding: 0.5rem;
     box-shadow: 3px 0 8px rgba(0,0,0,0.5);
     color: rgb(255, 255, 255);
     text-align: center;
@@ -157,9 +157,8 @@ main{
     #redes a{
         text-decoration: none;
         justify-self: center;
-        padding: 1rem;
+        padding: 0.5rem;
         color: white;
-        font-size: 2.5rem;
-        padding-top: 3rem;
+        font-size: 2rem;
     }
 }
