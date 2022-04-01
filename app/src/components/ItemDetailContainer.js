@@ -4,14 +4,50 @@ import ItemList from "./ItemList";
 import itemProductos from "../Utiles";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import { db } from './Firebase'
+import { getDoc, collection, doc, where, query, getDocs } from "firebase/firestore";
 
 const ItemDetailContainer = (props) => {
+    console.log(props)
     const [itemDeProductos, setItemDeProductos] = useState({});
 
     const { id } = useParams()
+    console.log(id)
+
 
     useEffect(() => {
-        const promise = new Promise((resolve, reject) => {
+        const productosCollection = collection(db, "productosIniciales");
+        const miFiltro = query(productosCollection, where("id", "==", id))
+            const documentos = getDocs(miFiltro)
+            documentos
+            .then((respuesta) => {
+                console.log(respuesta)
+
+            })
+            .catch((error) => {
+                console.log("Error al obtener los productos");
+
+            })
+
+
+
+        /* const documento = getDoc(doc(productosCollection, "BgvCvxFgdTvxN8Y2vrDA"));
+        console.log(documento)
+        documento
+            .then((respuesta) => {
+                console.log(respuesta.data())
+
+            })
+            .catch((error) => {
+                console.log("Error al obtener los productos");
+
+            }) */
+
+
+
+
+
+        /* const promise = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(itemProductos.find((item) => {
                     return item.id.toString() === id            
@@ -20,7 +56,7 @@ const ItemDetailContainer = (props) => {
         }).then((productos) => {
             setItemDeProductos(productos);
         });
-    });
+    } */});
 
     const greeting = props.greeting
     return (
