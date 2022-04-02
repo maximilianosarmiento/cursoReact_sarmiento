@@ -6,8 +6,10 @@ import { contexto } from './CartContext';
 import { useContext } from "react";
 
 const ItemDetail = (props) => {
+  
   const item = props.itemProductos;
-
+  console.log(props)
+  
   const carritoContext = useContext(contexto)
 
   const onAdd = (unidades) => {
@@ -23,7 +25,7 @@ const ItemDetail = (props) => {
       <img src={item.img} />
       <h4>{item.nombre}</h4>
       <h5>$ {item.precio}</h5>
-      <h6>Detalle del producto</h6>
+      <h6>{item.descripcion}</h6>
       {confCompra ? <ItemCount initial={1} stock={7} onAdd={onAdd} /> : <Link to='/carrito' className="btnDetalle"><p className="pcarrito">Ir al carrito</p></Link>}
     </div>
 

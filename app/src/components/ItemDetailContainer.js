@@ -17,13 +17,10 @@ const ItemDetailContainer = (props) => {
 
     useEffect(() => {
         const productosCollection = collection(db, "productosIniciales");
-        const miFiltro = query(productosCollection, where("id", "==", id))
+        const miFiltro = query(productosCollection, where("id", "==", Number (id)))
             const documentos = getDocs(miFiltro)
             documentos
-            .then((respuesta) => {
-                console.log(respuesta)
-
-            })
+            .then(respuesta => setItemDeProductos(respuesta.docs.map(doc=>doc.data())[0]))
             .catch((error) => {
                 console.log("Error al obtener los productos");
 
@@ -56,7 +53,7 @@ const ItemDetailContainer = (props) => {
         }).then((productos) => {
             setItemDeProductos(productos);
         });
-    } */});
+    } */}, [id]);
 
     const greeting = props.greeting
     return (

@@ -9,8 +9,8 @@ const Item = (props) => {
   return (
     <div id="cards">
       <img src={producto.img} alt={producto.nombre} />
-      <h4>{producto.nombre}</h4>
-      <h5>${producto.precio}</h5>
+      <h5>{producto.nombre}</h5>
+      <h6>Precio: ${producto.precio}</h6>
       <Button variant="primary" className="btnDetalle"><Link to={`/item/${producto.id}`}className="detalle">
         Ver detalle</Link></Button>
     </div>
