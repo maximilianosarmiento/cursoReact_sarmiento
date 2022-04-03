@@ -11,8 +11,8 @@ const Item = (props) => {
       <img src={producto.img} alt={producto.nombre} />
       <h5>{producto.nombre}</h5>
       <h6>Precio: ${producto.precio}</h6>
-      <Button variant="primary" className="btnDetalle"><Link to={`/item/${producto.id}`}className="detalle">
-        Ver detalle</Link></Button>
+      <Link to={`/item/${producto.id}`}className="detalle"><Button variant="primary" className="btnDetalle">
+        Ver detalle</Button></Link>
     </div>
   );
 };

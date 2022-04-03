@@ -7,6 +7,8 @@ const MiProvider = ({ children }) => {
 
     const [carrito, setCarrito] = useState([]);
     const [cantidad, setCantidad] = useState(0);
+    const [totalItems, setTotalItems] = useState(0);
+    const [precioTotal , setPrecioTotal] = useState(0);
 
     const borrarDelCarrito = (id)=>{
         
@@ -29,19 +31,31 @@ const MiProvider = ({ children }) => {
 
     const calcularTotalItems = ()=>{
         let total = 0
-        carrito.forEach(elemento => {
+        carrito.map(elemento => {
             total += elemento.cantidad
-        });
-        return total
-    }
+        })
+        setTotalItems(total) ;
+        
+    };
+
+     const calcularPrecioTotal=()=>{
+        let total = 0
+        carrito.map(elemento => {
+            total += elemento.producto.precio * elemento.cantidad;
+        })
+        setPrecioTotal(total);
+    };
 
     const valorDelContexto = {
         borrarDelCarrito,
         limpiarCarrito,
         carrito,
         cantidad,
+        precioTotal,
+        totalItems,
         calcularTotalItems,
         agregarAlCarrito,
+        calcularPrecioTotal
     };
 
     return <Provider value={valorDelContexto}>{children}</Provider>;

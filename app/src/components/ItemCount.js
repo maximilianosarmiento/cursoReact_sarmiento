@@ -1,34 +1,36 @@
-import {useState} from "react"
+import { useState } from "react"
 import Button from "react-bootstrap/esm/Button"
 
-const ItemCount =({initial,stock,onAdd}) => {
-    
-    let [contador,setContador] = useState(initial)
+const ItemCount = ({ initial, stock, onAdd }) => {
 
-    const agregar =()=>{
-        if (contador<stock){
-        setContador(contador+1)
+    let [contador, setContador] = useState(initial)
+
+    const agregar = () => {
+        if (contador < stock) {
+            setContador(contador + 1)
         }
     }
 
-    const restar =()=>{
-        if (contador>initial){
-            setContador(contador-1)
+    const restar = () => {
+        if (contador > initial) {
+            setContador(contador - 1)
         }
     }
 
-    const confirmar =()=>{
+    const confirmar = () => {
         onAdd(contador)
     }
 
     return (
         <>
             <p>Productos Seleccionados : {contador}</p>
-            <Button className="btn" onClick={agregar}>Agregar</Button>
-            <Button className="btn" onClick={restar}>Quitar</Button>
-            <Button className="confirmar" onClick={confirmar}>Confirmar Compra</Button>
+            <div className="contenedorBtnCount">
+                <Button className="btn" onClick={restar}>-</Button>
+                <Button className="confirmar" onClick={confirmar}>Confirmar Compra</Button>
+                <Button className="btn" onClick={agregar}>+</Button>
+            </div>
         </>
-    )
+            )
 }
-    
-export default ItemCount;
+
+            export default ItemCount;

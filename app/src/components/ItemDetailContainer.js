@@ -5,7 +5,7 @@ import itemProductos from "../Utiles";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { db } from './Firebase'
-import { getDoc, collection, doc, where, query, getDocs } from "firebase/firestore";
+import {collection,where, query, getDocs } from "firebase/firestore";
 
 const ItemDetailContainer = (props) => {
     console.log(props)
