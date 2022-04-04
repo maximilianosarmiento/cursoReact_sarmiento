@@ -11,6 +11,7 @@ const Carrito = () => {
   const { carrito, borrarDelCarrito, cantidad, calcularTotalItems, calcularPrecioTotal, precioTotal, totalItems  } = useContext(contexto)
   console.log(carrito)
   console.log(totalItems)
+  console.log(precioTotal)
 
   
   const btnConfirmarCompra = () => {
@@ -33,9 +34,10 @@ const Carrito = () => {
 
   return (
     <>
+    {calcularPrecioTotal()} {calcularTotalItems()}
       <div className='carritoTextContainer'>
         <h2>Carrito</h2>
-        {carrito.length === 0 ? <p>No hay productos en el carrito. <NavLink to="/">Por favor volve al store</NavLink> y selecciona tus productos </p> : <p>Cantidad de productos en carrito: {totalItems}.  Precio Total: ${precioTotal}</p>
+        {carrito.length === 0 ? <p>No hay productos en el carrito. <NavLink to="/">Por favor volve al store</NavLink> y selecciona tus productos </p> : <p>Cantidad de productos en carrito:{totalItems} .  Precio Total: ${precioTotal}</p>
         }</div>
       {
         carrito.map(elemento => (
