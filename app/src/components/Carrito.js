@@ -42,7 +42,7 @@ const Carrito = () => {
           return( 
           <div key={elemento.producto.id} className='carritoItemContainer'>
             <div key={elemento.producto.id} id="cards">
-              <img src={elemento.producto.img} alt="" />
+              <img className="imgCarrito" src={elemento.producto.img} alt="" />
               <div className="cardTxt">
                 <p>{elemento.producto.nombre}</p>
                 <p>{elemento.producto.precio}</p>

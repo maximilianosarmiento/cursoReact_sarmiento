@@ -23,7 +23,7 @@ const ItemDetail = (props) => {
 
   return (
     <div id="cardDetalle">
-      <img src={item.img} />
+      <img className="imgDetalle" src={item.img} />
       <div className="detalleTxt">
       <h4>{item.nombre}</h4>
       <h5>Precio: ${item.precio}</h5>

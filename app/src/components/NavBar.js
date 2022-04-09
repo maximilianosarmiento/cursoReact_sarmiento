@@ -13,7 +13,7 @@ const NavBar = () => {
     return (
         <>
             <Navbar id ="navContainer">
-                    <Link to="/" id="marca">E-Drugstore</Link>
+                    <Link to="/" id="marca">Guiño Commerce</Link>
                     <Nav className="NavBar">
                         <Link  to="/">Home</Link>
                         <Link  to="/categoria/Tecnologia">Tecnología</Link>
