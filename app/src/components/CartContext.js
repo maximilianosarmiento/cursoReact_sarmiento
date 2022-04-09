@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState} from "react";
 
 export const contexto = createContext()
 const { Provider } = contexto;
@@ -29,22 +29,21 @@ const MiProvider = ({ children }) => {
         setCarrito([]);
     };
 
-    const calcularTotalItems = ()=>{
+    
+    useEffect(() => {
         let total = 0
         carrito.map(elemento => {
             total += elemento.cantidad
-        })
-        setTotalItems(total) ;
-        
-    };
+            return setTotalItems(total)});
+    }, [carrito])
 
-     const calcularPrecioTotal=()=>{
+    useEffect(() => {
         let total = 0
         carrito.map(elemento => {
             total += elemento.producto.precio * elemento.cantidad;
-        })
-        setPrecioTotal(total);
-    };
+            return setPrecioTotal(total)
+        });
+    }, [carrito]);
 
     const valorDelContexto = {
         borrarDelCarrito,
@@ -53,9 +52,9 @@ const MiProvider = ({ children }) => {
         cantidad,
         precioTotal,
         totalItems,
-        calcularTotalItems,
+        //calcularTotalItems,
         agregarAlCarrito,
-        calcularPrecioTotal
+        //calcularPrecioTotal
     };
 
     return <Provider value={valorDelContexto}>{children}</Provider>;

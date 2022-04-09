@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
-import CartWidget from "./CartWidget";
 import Button from 'react-bootstrap/Button'
 import { contexto } from './CartContext';
 import { useContext } from "react";

@@ -8,7 +8,7 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 
 const Carrito = () => {
 
-  const { carrito, borrarDelCarrito, cantidad, calcularTotalItems, calcularPrecioTotal, precioTotal, totalItems } = useContext(contexto)
+  const { carrito, borrarDelCarrito, precioTotal, totalItems } = useContext(contexto)
   console.log(carrito)
   console.log(totalItems)
   console.log(precioTotal)
@@ -29,19 +29,18 @@ const Carrito = () => {
     const ventasCollection = collection(db, "ventas");
     const pedido = addDoc(ventasCollection, pedidoVenta)
     console.log(pedido);
+    
   }
-
-
   return (
     <>
-      {calcularPrecioTotal()} {calcularTotalItems()}
       <div className='carritoTextContainer'>
         <h2>Carrito</h2>
         {carrito.length === 0 ? <p>No hay productos en el carrito. <NavLink to="/">Por favor volve al store</NavLink> y selecciona tus productos </p> : <p>Cantidad de productos en carrito:{totalItems} .  Precio Total: ${precioTotal}</p>
         }</div>
       {
-        carrito.map(elemento => (
-          <div className='carritoItemContainer'>
+        carrito.map((elemento) => {
+          return( 
+          <div key={elemento.producto.id} className='carritoItemContainer'>
             <div key={elemento.producto.id} id="cards">
               <img src={elemento.producto.img} alt="" />
               <div className="cardTxt">
@@ -53,8 +52,8 @@ const Carrito = () => {
               <Button className="btnDetalle" onClick={() => borrarDelCarrito(elemento.producto.id)}>borrar</Button>
 
             </div>
-          </div>
-        )
+          </div>) 
+        }
         )}
       {carrito.length > 0 && <Button className="btn" onClick={() => { btnConfirmarCompra() }}>Finalizar Compra</Button>}
     </>
