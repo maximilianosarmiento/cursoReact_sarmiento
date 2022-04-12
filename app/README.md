@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/84a6a27b-417a-4813-9855-fad7eac798fa/deploy-status)](https://app.netlify.com/sites/sprightly-longma-a62fe8/deploys)
 # Reacstore
-Reacstore es un simulador de e-commerce, creado principalmente con React Js y sus diferentes funcionalidades o herramientas, como react-router, hooks, react-toastify,etc.
-Este proyecto además, es mi presentacion de proyecto final para el curso de React Js, en Coderhouse, por esta razón es que el foco principal está puento en la implementación y el correcto funcionamiento de la Librería y no tanto en los estilos.
+Reacstore es un simulador de e-commerce, creado principalmente con React Js y sus diferentes funcionalidades o herramientas como react-router, hooks, react-toastify,etc.
+Este proyecto además, es mi presentacion de proyecto final para el curso de React Js, en Coderhouse, por esta razón es que el foco principal está puesto en la implementación y el correcto funcionamiento de la Librería y no tanto en los estilos.
 ## Herramientas utilizadas
 ****
 * Firebase: V.9.6.10
