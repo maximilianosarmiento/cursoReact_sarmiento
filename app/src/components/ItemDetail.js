@@ -20,9 +20,13 @@ const ItemDetail = (props) => {
 
   return (
     <div id="cardDetalle">
+<<<<<<< HEAD
       <div>
         <img id="imgDetalle" src={item.img} />
       </div>
+=======
+      <img className="imgDetalle" src={item.img} />
+>>>>>>> a1da4001b50c0832e505b4b77a3ed0218f3d9970
       <div className="detalleTxt">
         <h4>{item.nombre}</h4>
         <h5>Precio: ${item.precio}</h5>

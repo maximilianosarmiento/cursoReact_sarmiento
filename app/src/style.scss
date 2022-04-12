@@ -74,18 +74,17 @@ $colorPrimario: lightblue;
         list-style: none;
 
         &:hover {
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease-in-out;
         }
 
         &:hover img {
-            transform: scale(1.15) rotate(-3deg);
+            transform: scale(1.15)
         }
 
         img {
-            margin-top: 10px;
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: 100%;
             transition: transform .75s;
 
         }
@@ -126,6 +125,11 @@ $colorPrimario: lightblue;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
             transform: scale(1.03, 1.03);
             transition: all 0.3s ease-in-out;
+        }
+        
+        .imgDetalle{
+            width: 200px;
+            height: auto;
         }
 
         #imgDetalle{
@@ -179,6 +183,8 @@ $colorPrimario: lightblue;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
 
+    
+
 
     .carritoTextContainer {
         display: block;
@@ -188,7 +194,12 @@ $colorPrimario: lightblue;
         margin-bottom: 0.5rem;
         width: 50%;
     }
+    .imgCarrito{
+    width: 40% !important;
+    }
 }
+
+
 
 footer {
     

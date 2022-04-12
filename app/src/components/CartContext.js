@@ -52,9 +52,13 @@ const MiProvider = ({ children }) => {
         cantidad,
         precioTotal,
         totalItems,
+<<<<<<< HEAD
 
         agregarAlCarrito,
 
+=======
+        agregarAlCarrito,
+>>>>>>> a1da4001b50c0832e505b4b77a3ed0218f3d9970
     };
 
     return <Provider value={valorDelContexto}>{children}</Provider>;
