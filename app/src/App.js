@@ -6,6 +6,7 @@ import MiProvider from "./components/CartContext"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+
 function App() {
     return (
         <MiProvider>
@@ -14,6 +15,7 @@ function App() {
                 <Main />
                 <Footer />
             </BrowserRouter>
+            
         </MiProvider>
     )
 }

@@ -6,29 +6,28 @@ import { contexto } from './CartContext';
 import { useContext } from "react";
 
 const ItemDetail = (props) => {
-  
+
   const item = props.itemProductos;
-  console.log(props)
 
   const carritoContext = useContext(contexto)
-  console.log(carritoContext)
 
   const onAdd = (unidades) => {
-    carritoContext.agregarAlCarrito(item,unidades)
+    carritoContext.agregarAlCarrito(item, unidades)
     setconfCompra(false)
-
   }
 
   const [confCompra, setconfCompra] = useState(true)
 
   return (
     <div id="cardDetalle">
-      <img src={item.img} />
+      <div>
+        <img id="imgDetalle" src={item.img} />
+      </div>
       <div className="detalleTxt">
-      <h4>{item.nombre}</h4>
-      <h5>Precio: ${item.precio}</h5>
-      <h6>{item.descripcion}</h6>
-      {confCompra ? <ItemCount initial={1} stock={7} onAdd={onAdd} /> : <Link to='/carrito'><Button className="btn">Ir al carrito</Button></Link>}
+        <h4>{item.nombre}</h4>
+        <h5>Precio: ${item.precio}</h5>
+        <h6>{item.descripcion}</h6>
+        {confCompra ? <ItemCount initial={1} stock={7} onAdd={onAdd} /> : <Link to='/carrito'><Button className="btn">Ir al carrito</Button></Link>}
       </div>
     </div>
   );

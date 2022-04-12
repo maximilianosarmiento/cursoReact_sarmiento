@@ -5,17 +5,15 @@ import { NavLink } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import { db } from './Firebase'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer, toast } from 'react-toastify'
 
 const Carrito = () => {
 
   const { carrito, borrarDelCarrito, precioTotal, totalItems } = useContext(contexto)
-  console.log(carrito)
-  console.log(totalItems)
-  console.log(precioTotal)
-
 
   const btnConfirmarCompra = () => {
-
+    toast.success("Compra realizada con éxito, Muchas gracias!")
     const pedidoVenta = {
       buyer: {
         nombre: 'Maxi Sarmiento',
@@ -28,7 +26,6 @@ const Carrito = () => {
     }
     const ventasCollection = collection(db, "ventas");
     const pedido = addDoc(ventasCollection, pedidoVenta)
-    console.log(pedido);
     
   }
   return (
@@ -55,7 +52,8 @@ const Carrito = () => {
           </div>) 
         }
         )}
-      {carrito.length > 0 && <Button className="btn" onClick={() => { btnConfirmarCompra() }}>Finalizar Compra</Button>}
+      {carrito.length > 0 && <Button className="btn" onClick={() => { btnConfirmarCompra()}}>Finalizar Compra</Button>}
+      <ToastContainer position="bottom-right"/>
     </>
   )
 }

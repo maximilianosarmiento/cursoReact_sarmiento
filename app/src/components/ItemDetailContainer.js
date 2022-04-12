@@ -3,13 +3,12 @@ import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { db } from './Firebase'
 import { collection, where, query, getDocs } from "firebase/firestore";
+import { toast } from 'react-toastify';
 
 const ItemDetailContainer = (props) => {
-    console.log(props)
     const [itemDeProductos, setItemDeProductos] = useState({});
 
     const { id } = useParams()
-    console.log(id)
 
 
     useEffect(() => {
@@ -19,7 +18,7 @@ const ItemDetailContainer = (props) => {
         documentos
             .then(respuesta => setItemDeProductos(respuesta.docs.map(doc => doc.data())[0]))
             .catch((error) => {
-                console.log("Error al obtener los productos");
+                toast.error("Error al obtener los productos");
             })
     }, [id]);
 
@@ -28,7 +27,6 @@ const ItemDetailContainer = (props) => {
         <>
             <h1>{greeting}</h1>
             <ItemDetail itemProductos={itemDeProductos} />
-
         </>
     );
 }

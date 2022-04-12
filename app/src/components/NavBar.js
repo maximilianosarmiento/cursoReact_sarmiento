@@ -8,16 +8,15 @@ import { contexto } from "./CartContext";
 const NavBar = () => {
 
     const {carrito} = useContext(contexto);
-    console.log(carrito)
     
     return (
         <>
             <Navbar id ="navContainer">
-                    <Link to="/" id="marca">E-Drugstore</Link>
+                    <Link to="/" id="marca">Reacstore</Link>
                     <Nav className="NavBar">
                         <Link  to="/">Home</Link>
-                        <Link  to="/categoria/Tecnologia">Tecnología</Link>
-                        <Link  to="/categoria/Moda">Moda</Link>
+                        <Link  to="/categoria/Comestibles">Comestibles</Link>
+                        <Link  to="/categoria/Bebidas">Bebidas</Link>
                         {carrito.length > 0 && <CartWidget/>}
                     </Nav>
                     

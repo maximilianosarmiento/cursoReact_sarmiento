@@ -4,6 +4,7 @@ import Carrito from "./components/Carrito";
 import { Route, Routes } from "react-router-dom";
 
 
+
 const Main = () => {
     return (
         <main className="container">
@@ -13,6 +14,7 @@ const Main = () => {
                 <Route path="/item/:id" element={<ItemDetailContainer/>}/>
                 <Route path="/carrito" element={<Carrito/>}/>
             </Routes>
+                
         </main>
     );
 }

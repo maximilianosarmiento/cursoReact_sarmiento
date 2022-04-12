@@ -91,8 +91,9 @@ $colorPrimario: lightblue;
         }
 
         .cardTxt {
-            padding-top: 25px;
+            padding: 15px 4px 0px;
             text-align: center;
+            
         }
 
 
@@ -127,9 +128,16 @@ $colorPrimario: lightblue;
             transition: all 0.3s ease-in-out;
         }
 
+        #imgDetalle{
+            width: 200px;
+            height: 200px;
+            margin-top: 10px;
+            transition: transform .75s;
+        }
+
         .detalleTxt {
             text-align: center;
-            padding-top: 20px;
+            padding: 15px 4px 0px;
         }
     }
 
